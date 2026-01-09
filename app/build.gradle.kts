@@ -18,13 +18,43 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName(Build.Release.name) {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            isMinifyEnabled = Build.Release.isMinifyEnabled
+            isDebuggable = Build.Release.isDebuggable
+            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
+            versionNameSuffix = Build.Release.versionNameSuffix
+            applicationIdSuffix = Build.Release.applicationIdSuffix
         }
+
+        getByName(Build.Debug.name) {
+            isMinifyEnabled = Build.Debug.isMinifyEnabled
+            isDebuggable = Build.Debug.isDebuggable
+            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
+            versionNameSuffix = Build.Debug.versionNameSuffix
+            applicationIdSuffix = Build.Debug.applicationIdSuffix
+        }
+
+        create(Build.ReleaseExternalQa.name) {
+            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
+            isDebuggable = Build.ReleaseExternalQa.isDebuggable
+            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
+            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
+            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+        }
+    }
+
+    flavorDimensions.add(BuildDimensions.APP)
+    flavorDimensions.add(BuildDimensions.STORE)
+
+    productFlavors {
+        BuildFlavor.Google.create(this)
+        BuildFlavor.Huawei.create(this)
+        BuildFlavor.Driver.create(this)
+        BuildFlavor.Client.create(this)
     }
 
     composeOptions {
