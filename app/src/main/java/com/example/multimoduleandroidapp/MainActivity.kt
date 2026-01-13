@@ -1,6 +1,7 @@
 package com.example.multimoduleandroidapp
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.multimoduleandroidapp.ui.theme.MultiModuleAndroidAppTheme
+import com.example.provider.DataProvider
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +23,7 @@ class MainActivity : ComponentActivity() {
             MultiModuleAndroidAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = DataProvider.USER_NAME,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
