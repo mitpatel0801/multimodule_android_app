@@ -17,6 +17,12 @@ android {
         testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
+    signingConfigs {
+        BuildSigning.Release(project).create(this)
+        BuildSigning.ReleaseExternalQa(project).create(this)
+        BuildSigning.Debug(project).create(this)
+    }
+
     buildTypes {
         getByName(Build.Release.name) {
             proguardFiles(
@@ -28,6 +34,7 @@ android {
             enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
             versionNameSuffix = Build.Release.versionNameSuffix
             applicationIdSuffix = Build.Release.applicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
 
         getByName(Build.Debug.name) {
@@ -36,6 +43,7 @@ android {
             enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
             versionNameSuffix = Build.Debug.versionNameSuffix
             applicationIdSuffix = Build.Debug.applicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
         }
 
         create(Build.ReleaseExternalQa.name) {
@@ -44,6 +52,7 @@ android {
             enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
             versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
             applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
         }
     }
 
