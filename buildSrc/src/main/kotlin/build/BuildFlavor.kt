@@ -1,3 +1,5 @@
+package build
+
 import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.LibraryProductFlavor
 import org.gradle.api.NamedDomainObjectContainer

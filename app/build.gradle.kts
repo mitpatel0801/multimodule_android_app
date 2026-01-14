@@ -1,6 +1,12 @@
+import build.BuildCreator
+import build.BuildDimensions
+import build.BuildFlavor
+import dependency.Dependencies
+import dependency.TestDependencies
+
 plugins {
-    id(BuildPlugins.KOTLIN_ANDROID)
-    id(BuildPlugins.ANDROID_APPLICATION)
+    id(dependency.BuildPlugins.KOTLIN_ANDROID)
+    id(dependency.BuildPlugins.ANDROID_APPLICATION)
 }
 
 android {
@@ -24,34 +30,19 @@ android {
     }
 
     buildTypes {
-        getByName(Build.Release.name) {
+        BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            isMinifyEnabled = Build.Release.isMinifyEnabled
-            isDebuggable = Build.Release.isDebuggable
-            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
-            versionNameSuffix = Build.Release.versionNameSuffix
-            applicationIdSuffix = Build.Release.applicationIdSuffix
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
 
-        getByName(Build.Debug.name) {
-            isMinifyEnabled = Build.Debug.isMinifyEnabled
-            isDebuggable = Build.Debug.isDebuggable
-            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
-            versionNameSuffix = Build.Debug.versionNameSuffix
-            applicationIdSuffix = Build.Debug.applicationIdSuffix
+        BuildCreator.Debug(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
         }
 
-        create(Build.ReleaseExternalQa.name) {
-            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
-            isDebuggable = Build.ReleaseExternalQa.isDebuggable
-            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
-            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
-            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+        BuildCreator.ReleaseExternalQa(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
         }
     }
@@ -78,6 +69,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

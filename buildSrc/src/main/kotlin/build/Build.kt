@@ -1,3 +1,5 @@
+package build
+
 sealed class Build(
     val name: String,
     val isMinifyEnabled: Boolean = false,

@@ -24,10 +24,10 @@ sealed class BuildSigning(val name: String) {
     class Release(private val project: Project) : BuildSigning(SigningTypes.RELEASE) {
         override fun create(container: NamedDomainObjectContainer<out ApkSigningConfig>) {
             container.create(name) {
-                storeFile = File(project.getLocalProperties("release_key.store"))
-                storePassword = project.getLocalProperties("release_store.password")
-                keyAlias = project.getLocalProperties("release_key.alias")
-                keyPassword = project.getLocalProperties("release_key.password")
+                storeFile = File(project.getLocalProperty("release_key.store"))
+                storePassword = project.getLocalProperty("release_store.password")
+                keyAlias = project.getLocalProperty("release_key.alias")
+                keyPassword = project.getLocalProperty("release_key.password")
 
                 enableV1Signing = true
                 enableV2Signing = true
@@ -39,10 +39,10 @@ sealed class BuildSigning(val name: String) {
         override fun create(container: NamedDomainObjectContainer<out ApkSigningConfig>) {
             container.create(name) {
                 // UPDATED: Now matches the qa_ prefix in your properties file
-                storeFile = File(project.getLocalProperties("qa_key.store"))
-                storePassword = project.getLocalProperties("qa_store.password")
-                keyAlias = project.getLocalProperties("qa_key.alias")
-                keyPassword = project.getLocalProperties("qa_key.password")
+                storeFile = File(project.getLocalProperty("qa_key.store"))
+                storePassword = project.getLocalProperty("qa_store.password")
+                keyAlias = project.getLocalProperty("qa_key.alias")
+                keyPassword = project.getLocalProperty("qa_key.password")
 
                 enableV1Signing = true
                 enableV2Signing = true
