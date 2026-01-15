@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "MultiModule Android App"
 include(":app")
+include(":features:login")
+include(":features:home")
