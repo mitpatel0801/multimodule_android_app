@@ -7,7 +7,7 @@ plugins {
     id(dependency.BuildPlugins.KOTLIN_ANDROID)
     id(dependency.BuildPlugins.ANDROID_APPLICATION)
     id(dependency.BuildPlugins.ANDROID)
-    kotlin(dependency.BuildPlugins.KAPT)
+    id(dependency.BuildPlugins.KAPT)
 }
 
 android {
