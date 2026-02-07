@@ -1,8 +1,13 @@
-import SharedPlugins.SharedLibraryGradlePlugin
-import dependency.*
+import dependency.androidx
+import dependency.hilt
+import dependency.room
+import dependency.testDebugDeps
+import dependency.testDeps
+import dependency.testImplDeps
+import plugs.SharedLibraryGradlePlugin
 
 plugins {
-    id(dependency.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
 }
 
 apply<SharedLibraryGradlePlugin>()

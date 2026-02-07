@@ -1,10 +1,9 @@
-package SharedPlugins
+package plugs
 
 
 import build.BuildDimensions
 import build.BuildFlavor
 import com.android.build.gradle.LibraryExtension
-import dependency.BuildPlugins
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -20,6 +19,7 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
     private fun Project.addPluginConfigurations() {
         plugins.apply(BuildPlugins.KOTLIN_ANDROID)
         plugins.apply(BuildPlugins.KAPT)
+        plugins.apply(BuildPlugins.KTLINT)
     }
 
     private fun Project.addAndroidConfigurations() {

@@ -1,4 +1,4 @@
-package dependency
+package plugs
 
 object BuildPlugins {
     const val ANDROID_APPLICATION = "com.android.application"
@@ -7,4 +7,5 @@ object BuildPlugins {
     const val ANDROID_LIBRARY = "android-library"
     const val KAPT = "org.jetbrains.kotlin.kapt"
     const val HILT = "com.google.dagger.hilt.android"
+    const val KTLINT = "ktlint-settings"
 }

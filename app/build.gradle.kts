@@ -1,13 +1,22 @@
 import build.BuildCreator
 import build.BuildDimensions
 import build.BuildFlavor
-import dependency.*
+import dependency.androidx
+import dependency.hilt
+import dependency.loginModule
+import dependency.okHttp
+import dependency.retrofit
+import dependency.room
+import dependency.testDebugDeps
+import dependency.testDeps
+import dependency.testImplDeps
 
 plugins {
-    id(dependency.BuildPlugins.KOTLIN_ANDROID)
-    id(dependency.BuildPlugins.ANDROID_APPLICATION)
-    id(dependency.BuildPlugins.ANDROID)
-    id(dependency.BuildPlugins.KAPT)
+    id(plugs.BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.ANDROID_APPLICATION)
+    id(plugs.BuildPlugins.ANDROID)
+    id(plugs.BuildPlugins.KAPT)
+    id(plugs.BuildPlugins.KTLINT)
 }
 
 android {
@@ -34,7 +43,7 @@ android {
         BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
