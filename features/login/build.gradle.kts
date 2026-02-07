@@ -1,6 +1,9 @@
+import dependency.*
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(dependency.BuildPlugins.ANDROID_LIBRARY)
+    id(dependency.BuildPlugins.KOTLIN_ANDROID)
+    kotlin(dependency.BuildPlugins.KAPT)
 }
 
 android {
@@ -34,10 +37,10 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidx()
+    hilt()
+    room()
+    testDeps()
+    testImplDeps()
+    testDebugDeps()
 }
