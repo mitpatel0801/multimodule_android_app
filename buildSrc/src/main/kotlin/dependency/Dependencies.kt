@@ -16,7 +16,9 @@ object DependenciesVersions {
     const val RETROFIT_COROUTINE_ADAPTER_VERSION = "0.9.2"
     const val OKHTTP = "5.0.0-alpha.2"
     const val HILT = "2.44"
+    const val HILT_COMPOSE = "1.2.0"
     const val ROOM = "2.6.1"
+    const val WORK_MANAGER = "2.8.1"
 
 }
 
@@ -37,6 +39,10 @@ object Dependencies {
     const val hiltAndroid = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${DependenciesVersions.HILT}"
     const val hiltAgp = "com.google.dagger:hilt-android-gradle-plugin:${DependenciesVersions.HILT}"
+    const val hiltCompose = "androidx.hilt:hilt-work:${DependenciesVersions.HILT_COMPOSE}"
+    const val hiltCompilerKapt = "androidx.hilt:hilt-compiler:${DependenciesVersions.HILT_COMPOSE}"
+    const val hiltNavigation =
+        "androidx.hilt:hilt-navigation-compose:${DependenciesVersions.HILT_COMPOSE}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${DependenciesVersions.RETROFIT}"
     const val retrofitConverterGson =
@@ -51,13 +57,16 @@ object Dependencies {
     const val roomRuntime = "androidx.room:room-runtime:${DependenciesVersions.ROOM}"
     const val roomCompiler = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
     const val roomKtx = "androidx.room:room-ktx:${DependenciesVersions.ROOM}"
+    const val workManager = "androidx.work:work-runtime-ktx:${DependenciesVersions.WORK_MANAGER}"
 }
 
 
 object TestDependencies {
     const val ANDROIDX_JUNIT = "androidx.test.ext:junit:${DependenciesVersions.JUNIT_VERSION}"
-    const val ANDROIDX_ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${DependenciesVersions.ESPRESSO_CORE}"
+    const val ANDROIDX_ESPRESSO_CORE =
+        "androidx.test.espresso:espresso-core:${DependenciesVersions.ESPRESSO_CORE}"
     const val ANDROIDX_COMPOSE_UI_TEST =
         "androidx.compose.ui:ui-test-junit4:${DependenciesVersions.COMPOSE_UI}"
-    const val ANDROIDX_COMPOSE_UI_TEST_MANIFEST ="androidx.compose.ui:ui-test-manifest:${DependenciesVersions.COMPOSE_UI}"
+    const val ANDROIDX_COMPOSE_UI_TEST_MANIFEST =
+        "androidx.compose.ui:ui-test-manifest:${DependenciesVersions.COMPOSE_UI}"
 }

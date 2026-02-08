@@ -1,6 +1,7 @@
 import build.BuildCreator
 import build.BuildDimensions
 import build.BuildFlavor
+import dependency.DependenciesVersions
 import dependency.androidx
 import dependency.hilt
 import dependency.loginModule
@@ -21,6 +22,7 @@ plugins {
   id(plugs.BuildPlugins.DETEKT)
   id(plugs.BuildPlugins.UPDATE_DEPS_VERSIONS)
   id(plugs.BuildPlugins.DOKKA)
+  id(plugs.BuildPlugins.HILT) version dependency.DependenciesVersions.HILT
 }
 
 android {

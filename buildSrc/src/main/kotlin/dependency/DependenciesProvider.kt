@@ -25,7 +25,12 @@ fun DependencyHandler.okHttp() {
 
 fun DependencyHandler.hilt() {
     implementation(Dependencies.hiltAndroid)
+    implementation(Dependencies.hiltCompose)
+    implementation(Dependencies.hiltNavigation)
     kapt(Dependencies.hiltCompiler)
+    kapt(Dependencies.hiltAgp)
+    kapt(Dependencies.hiltCompilerKapt)
+
 }
 
 fun DependencyHandler.androidx() {
@@ -36,6 +41,7 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
     implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
     implementation(Dependencies.ANDROIDX_MATERIAL3)
+    implementation(Dependencies.workManager)
 }
 
 fun DependencyHandler.loginModule() {
@@ -44,6 +50,18 @@ fun DependencyHandler.loginModule() {
 
 fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
+}
+
+fun DependencyHandler.dataModule() {
+    moduleImplementation(project(":core:data"))
+}
+
+fun DependencyHandler.domainModule() {
+    moduleImplementation(project(":core:domain"))
+}
+
+fun DependencyHandler.presentationModule() {
+    moduleImplementation(project(":core:presentation"))
 }
 
 fun DependencyHandler.testDeps() {
