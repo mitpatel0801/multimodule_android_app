@@ -1,6 +1,9 @@
 package plugs
 
 
+import BuildSigning
+import SigningTypes
+import build.BuildCreator
 import build.BuildDimensions
 import build.BuildFlavor
 import com.android.build.gradle.LibraryExtension
@@ -34,6 +37,29 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
                 minSdk = BuildConfig.MIN_SDK_VERSION
                 testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
             }
+
+            signingConfigs {
+                BuildSigning.Release(project).create(this)
+                BuildSigning.ReleaseExternalQa(project).create(this)
+                BuildSigning.Debug(project).create(this)
+            }
+
+            buildTypes {
+                BuildCreator.Release(project).createLibrary(this).apply {
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android-optimize.txt"),
+                        "proguard-rules.pro"
+                    )
+                    signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
+                }
+                BuildCreator.Debug(project).createLibrary(this).apply {
+                    signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
+                }
+                BuildCreator.ReleaseExternalQa(project).createLibrary(this).apply {
+                    signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
+                }
+            }
+
             flavorDimensions.add(BuildDimensions.APP)
             flavorDimensions.add(BuildDimensions.STORE)
 
@@ -47,6 +73,10 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
             buildFeatures {
                 compose = true
                 buildConfig = true
+            }
+            
+            composeOptions {
+                kotlinCompilerExtensionVersion = "1.5.1"
             }
 
             compileOptions {

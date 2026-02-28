@@ -10,7 +10,7 @@
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">qa.myapp.com</domain>
         <pin-set>
-            <pin digest="SHA-256">46YGkdskOspdsphagshaghsgahsgskkdsgRg=</pin>
+            <pin digest="SHA-256">46YGkdskOspdsphagshaghsgahsgskkdsgRgABCDEFG=</pin>
         </pin-set>
     </domain-config>
 

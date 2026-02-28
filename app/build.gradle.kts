@@ -3,9 +3,12 @@ import build.BuildDimensions
 import build.BuildFlavor
 import dependency.DependenciesVersions
 import dependency.androidx
+import dependency.dataModule
+import dependency.domainModule
 import dependency.hilt
 import dependency.loginModule
 import dependency.okHttp
+import dependency.presentationModule
 import dependency.retrofit
 import dependency.room
 import dependency.testDebugDeps
@@ -37,6 +40,9 @@ android {
     versionName = ReleaseConfig.VERSION_NAME
 
     testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
+    vectorDrawables {
+      useSupportLibrary = true
+    }
   }
 
   signingConfigs {
@@ -81,17 +87,28 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = JavaVersion.VERSION_1_8.toString()
   }
   buildFeatures {
     compose = true
     buildConfig = true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.5.1"
+  }
+  packaging {
+    resources {
+      excludes += "/META-INF/{AL2.0,LGPL2.1}"
+    }
   }
 }
 
 dependencies {
 
   loginModule()
+  dataModule()
+  domainModule()
+  presentationModule()
   androidx()
   hilt()
   room()
