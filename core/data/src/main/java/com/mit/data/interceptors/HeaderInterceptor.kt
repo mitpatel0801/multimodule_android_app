@@ -1,4 +1,4 @@
-package com.mit.data
+package com.mit.data.interceptors
 
 import okhttp3.Interceptor
 import okhttp3.Response
