@@ -1,25 +1,16 @@
 package com.mit.data
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.mit.data.constants.ACCESS_TOKEN_TAG
-import com.mit.data.constants.CLIENT_ID_TAG
 import com.mit.data.constants.HEADER_INTERCEPTOR_TAG
-import com.mit.data.constants.LANGUAGE_TAG
 import com.mit.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.mit.data.factory.ServiceFactory
-import com.mit.data.interceptors.AUTHORIZATION_HEADER
-import com.mit.data.interceptors.CLIENT_ID_HEADER
-import com.mit.data.interceptors.HeaderInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import java.util.Locale
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
